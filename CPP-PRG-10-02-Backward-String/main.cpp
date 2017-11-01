@@ -14,8 +14,58 @@
 
 using namespace std;
 
+string *getString();
+string *reverseString(string *);
+void swap(char *, char *);
+void displayString(string *);
+
 int main()
 {
+    string *strString = nullptr;
+    
+    strString = getString();
+    
+    strString = reverseString(strString);
+    
+    displayString(strString);
     
     return 0;
+}
+
+string *getString()
+{
+    string *strStr = nullptr;
+    
+    strStr = new string;
+    
+    cout << "Please enter a string to reverse:\n";
+    getline(cin, *strStr);
+    
+    return strStr;
+}
+
+string *reverseString(string *strStr)
+{
+    for(int i = 0 ; i < strStr->length() / 2 ; i++)
+    {
+        swap(strStr->at(i), strStr->at(strStr->length() - i - 1));
+    }
+    
+    return strStr;
+}
+
+void displayString(string *strStr)
+{
+    cout << "That string reversed is:\n" << *strStr << endl;
+}
+
+void swap(char *chrA, char *chrB)
+{
+    char *chrTemp = nullptr;
+    
+    chrTemp = new char;
+    
+    chrTemp = chrA;
+    chrA = chrB;
+    chrB = chrTemp;
 }
